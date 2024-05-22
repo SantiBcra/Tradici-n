@@ -49,3 +49,7 @@ h3{
   border-radius: 4px;
   font-size: 16px;
 }
+
+.redButton{
+  background-color: rgba(226, 27, 27, 0.767);
+}

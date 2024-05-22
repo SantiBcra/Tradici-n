@@ -63,8 +63,10 @@ export const postHaircut = (state)=> async dispatch => {
     export const editHaircut = (currentData)=> async dispatch => {
    
       try {
-        const {data} = await axios.put('https://server-tradicion.onrender.com/admin/haircut',currentData)
-        return dispatch
+        const toEdit = await axios.put('https://server-tradicion.onrender.com/admin/haircut',currentData)
+        const {data} = await axios.get('https://server-tradicion.onrender.com/admin/haircut')
+
+      return dispatch({type: GET_HAIRCUTS, payload: data});
       } 
       catch (error) {
          throw Error(error.message);
@@ -76,8 +78,11 @@ export const postHaircut = (state)=> async dispatch => {
       export const deleteHaircut = (id)=> async dispatch => {
    
         try {
-          const {data} = await axios.delete(`https://server-tradicion.onrender.com/admin/haircut${id}`)
-          return dispatch
+          const toDelete = await axios.delete(`https://server-tradicion.onrender.com/admin/haircut${id}`)
+
+          const {data} = await axios.get('https://server-tradicion.onrender.com/admin/haircut')
+
+      return dispatch({type: GET_HAIRCUTS, payload: data});
         } 
         catch (error) {
            throw Error(error.message);

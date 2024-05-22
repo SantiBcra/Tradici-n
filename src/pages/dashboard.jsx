@@ -91,7 +91,7 @@ const handleChange = (e) => {
 const handleSubmit = (e) => {
   e.preventDefault();
   dispatch(editHaircut(currentData))
-  dispatch(getCortes())
+  
   setIsEditing(false);
   Swal.fire({
     title: "Listo!",
@@ -99,6 +99,8 @@ const handleSubmit = (e) => {
     
     icon: "success"
   });
+  
+  
 
 };
 
@@ -184,7 +186,7 @@ const handleSubmit = (e) => {
         <td >- {corte.metodo}</td>
         <td>{corte.fecha} </td>
         <td> {corte.time}</td>
-        <td onClick={() => handleEditClick(corte)}> Editar</td>
+        <td className="redButton" onClick={() => handleEditClick(corte)}> Editar</td>
         
 
         <td onClick={() => {dispatch(deleteHaircut(corte.id))
@@ -195,7 +197,9 @@ const handleSubmit = (e) => {
     icon: "success"
   });
 
-}} className="botoncito" >Eliminar Dato </td>
+  
+
+}} className="redButton" >Eliminar Dato </td>
 
 
     </tr>
